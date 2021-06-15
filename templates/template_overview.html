@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <article class="media content-section">
+        <div class="media-body">
+            <h2>Click on a Template to display the content</h2>
+
+            <table id="template_files_table" class="table table-bordered table sortable table-striped">
+                <thead>
+                <tr>
+                    <th style="cursor: pointer;">Name</th>
+                    <th>Modification Date</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td><a href="/return_template/{{ item[0] }}">{{ item[0] }}</a></td>
+                    <td>{{ item[1] }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Modification Date</th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </article>
+
+{% endblock content %}

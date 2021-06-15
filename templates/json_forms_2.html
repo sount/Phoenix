@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <article class="media content-section">
+        <div class="media-body">
+            <h2>Modify Template</h2>
+            <form method="POST">
+                <label for="template_select" class="form-control-label">Choose Template you want to Modify</label>
+                <select id="template_select" name="template_select" class="form-control form-control-lg">
+                    {% for x in items %}
+                        <option value="{{ x }}">{{ x }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <button type="submit" class="btn btn-primary col-md-6 center">Go</button>
+            </form>
+
+            <form method="POST">
+                {% for key, value in json.items() recursive %}
+                    <label for="{{ key }}" class="form-control-label">{{ key }}</label><br>
+                    <input type="text" id="{{ key }}" name="{{ key }}" class="form-control form-control-lg"
+                           value="{{ value }}"><br>
+                {% endfor %}
+                <label for="template_name" class="form-control-label">Name of the new Template</label><br>
+                <input type="text" id="template_name" name="template_name" class="form-control form-control-lg"><br>
+                <br>
+                <input type="submit" value="Submit" class="btn btn-primary col-md-6 center">
+            </form>
+        </div>
+    </article>
+
+{% endblock content %}
